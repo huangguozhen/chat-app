@@ -2,8 +2,6 @@ let index = 1;
 
 export const addGroup = name => (dispatch, getState) => {
   const { group } = getState();
-  // if (typeof group[name] !== 'undefined')
-  //   return Promise.reject();
 
   group[index++] = { name };
   dispatch({

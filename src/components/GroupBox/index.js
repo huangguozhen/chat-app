@@ -40,6 +40,10 @@ class GroupBox extends Component {
     });
   }
 
+  handleSetCurrent (key) {
+    this.props.setCurrent(key);
+  }
+
   handleEdit (key) {
     this.setState({ prev: key, name: this.props.data[key].name });
     this.toggle();
@@ -76,7 +80,7 @@ class GroupBox extends Component {
       <aside className={this.props.className}>
         <ul className={Styles.list}>
           {Object.keys(data).map((key, index) => (
-            <li className={Styles.item} key={index}>
+            <li className={Styles.item} key={index} onClick={this.handleSetCurrent.bind(this, key)}>
               <div className={Styles.name}>{data[key].name}</div>
               <Button color="link" onClick={this.handleEdit.bind(this, key)}>Edit</Button>
               <Button color="link" onClick={this.handleDelete.bind(this, key)}>Delete</Button>

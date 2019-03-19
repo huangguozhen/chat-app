@@ -1,9 +1,9 @@
-export const namespace = 'group';
+export const namespace = 'global';
 
 const initialState = {};
 
 export default function (state = initialState, action) {
-  if (/^group\/\w+/.test(action.type)) {
+  if (/^global\/\w+/.test(action.type)) {
     return { ...state, ...action.payload };
   }
 
