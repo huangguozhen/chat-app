@@ -19,6 +19,7 @@ import {
   delUser,
   updateUser
 } from '../../actions/user';
+import { send } from  '../../actions/message';
 
 class ChatRoom extends Component {
   render() {
@@ -26,6 +27,11 @@ class ChatRoom extends Component {
     let users = {};
     if (global.current_group && group[global.current_group].users) {
       users = group[global.current_group].users;
+    }
+
+    let messages = [];
+    if (global.current_group && group[global.current_group].messages) {
+      messages = group[global.current_group].messages;
     }
 
     return (
@@ -43,6 +49,9 @@ class ChatRoom extends Component {
           />
           <MessageBox
             className={Styles.main}
+            data={messages}
+            send={this.props.send}
+            current_user={this.props.global.current_user}
           />
           <UserBox
             className={Styles.right}
@@ -73,6 +82,7 @@ export default connect(select, {
   addGroup,
   delGroup,
   updateGroup,
-  setCurrentGroup
+  setCurrentGroup,
+  send
 })(ChatRoom);
 

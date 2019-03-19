@@ -55,7 +55,7 @@ class GroupBox extends Component {
     try {
       await this.props.delGroup(name);
     } catch (e) {
-      window.alert('delete group fail');
+      window.alert(e);
     }
   }
 
@@ -72,7 +72,7 @@ class GroupBox extends Component {
 
       this.toggle();
     } catch (e) {
-      window.alert('add group fail');
+      window.alert(e);
     }
   }
 

@@ -55,7 +55,7 @@ class UserBox extends Component {
     try {
       await this.props.delUser(key);
     } catch (e) {
-      window.alert('delete user fail');
+      window.alert(e);
     }
   }
 
@@ -72,7 +72,7 @@ class UserBox extends Component {
 
       this.toggle();
     } catch (e) {
-      window.alert('add user fail');
+      window.alert(e);
     }
 
   }
