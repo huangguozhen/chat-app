@@ -1,0 +1,25 @@
+.chatroom {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+}
+
+.left, .right {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 25%;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #CCC;
+}
+
+.main {
+  flex: 1;
+  margin: 5px 0;
+  border: 1px solid #CCC;
+}
