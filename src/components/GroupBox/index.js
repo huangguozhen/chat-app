@@ -9,8 +9,10 @@ import {
   ModalBody,
   ModalFooter
 } from 'reactstrap';
+import cls from 'classname';
 import Styles from './index.module.scss';
 
+/* eslint eqeqeq: 0 */
 class GroupBox extends Component {
   static defaultProps = {
     data: {}
@@ -75,12 +77,16 @@ class GroupBox extends Component {
   }
 
   render() {
-    const { data } = this.props;
+    const { data, current } = this.props;
     return (
       <aside className={this.props.className}>
         <ul className={Styles.list}>
           {Object.keys(data).map((key, index) => (
-            <li className={Styles.item} key={index} onClick={this.handleSetCurrent.bind(this, key)}>
+            <li
+              className={cls({[Styles.item]: true, [Styles.active]: key == current })}
+              key={index}
+              onClick={this.handleSetCurrent.bind(this, key)}
+            >
               <div className={Styles.name}>{data[key].name}</div>
               <Button color="link" onClick={this.handleEdit.bind(this, key)}>Edit</Button>
               <Button color="link" onClick={this.handleDelete.bind(this, key)}>Delete</Button>

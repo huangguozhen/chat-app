@@ -10,7 +10,10 @@ import {
   delGroup,
   updateGroup
 } from '../../actions/group';
-import { setCurrentGroup } from '../../actions/global';
+import {
+  setCurrentGroup,
+  setCurrentUser
+} from '../../actions/global';
 import {
   addUser,
   delUser,
@@ -32,6 +35,7 @@ class ChatRoom extends Component {
           <GroupBox
             className={Styles.left}
             data={this.props.group}
+            current={this.props.global.current_group}
             addGroup={this.props.addGroup}
             delGroup={this.props.delGroup}
             updateGroup={this.props.updateGroup}
@@ -43,9 +47,11 @@ class ChatRoom extends Component {
           <UserBox
             className={Styles.right}
             data={users}
+            current={this.props.global.current_user}
             addUser={this.props.addUser}
             delUser={this.props.delUser}
             updateUser={this.props.updateUser}
+            setCurrent={this.props.setCurrentUser}
           />
         </div>
         <footer className={Styles.footer}></footer>
@@ -63,6 +69,7 @@ export default connect(select, {
   addUser,
   delUser,
   updateUser,
+  setCurrentUser,
   addGroup,
   delGroup,
   updateGroup,
