@@ -33,6 +33,10 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "jest-enzyme": "^7.0.2",
+    "react-test-renderer": "^16.8.4",
     "socket.io": "^2.2.0"
   }
 }

@@ -5,6 +5,11 @@ import Styles from './index.module.scss';
 
 /* eslint eqeqeq: 0 */
 class MessageBox extends Component {
+  static defaultProps = {
+    data: [],
+    current_user: ''
+  };
+
   constructor (props) {
     super(props);
     this.state = { message: '' };
@@ -27,7 +32,6 @@ class MessageBox extends Component {
 
   render() {
     const { data, current_user } = this.props;
-    console.log(current_user);
 
     return (
       <div className={this.props.className}>
