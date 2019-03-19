@@ -5,6 +5,8 @@ const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io').listen(server);
 
+const groups = {};
+
 app.use(express.static(path.join(__dirname, '../build')));
 
 app.get('/', function (req, res) {
@@ -12,7 +14,8 @@ app.get('/', function (req, res) {
 });
 
 io.on('connection', function ()  {
-  console.log('socket.io connect.');
+  io.on('addGroup', function (groupName) {
+  });
 })
 
 server.listen(9000, function () {
