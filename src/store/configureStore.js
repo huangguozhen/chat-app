@@ -1,6 +1,15 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from  'redux-persist/lib/storage';
 import reducers from '../reducers';
+
+const persistConfig = {
+  key: 'root',
+  storage
+};
+
+const persistedReducer = persistReducer(persistConfig, reducers);
 
 export default function (initialState = {}) {
   const composeEnhancers =
@@ -11,8 +20,9 @@ export default function (initialState = {}) {
     }) : compose;
 
   const enchancer = composeEnhancers(applyMiddleware(thunk));
-  const store = createStore(reducers, initialState, enchancer);
+  const store = createStore(persistedReducer, initialState, enchancer);
+  const persistor = persistStore(store);
 
-  return store;
+  return { store, persistor };
 }
 
